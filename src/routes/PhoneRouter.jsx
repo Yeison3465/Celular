@@ -1,0 +1,16 @@
+import React from 'react'
+import { Route, Routes } from 'react-router-dom'
+import { Wallet } from '../pages/Wallet'
+import { Menu } from '../pages/Menu'
+
+export const PhoneRouter = () => {
+    return (
+        <>
+            <Routes>
+                <Route path="/" element={<Menu/>} />
+                <Route path="Billetera" element={<Wallet/>} />
+                
+            </Routes>
+        </>
+    )
+}
