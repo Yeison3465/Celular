@@ -29,7 +29,7 @@ export const Menu = () => {
             <div className='grid grid-cols-4 gap-3 mt-12  place-items-center'>
                 <Aplication color="#ff0000" color2="#00ff00" icon="Apli" name="Billera"  to="/Billetera"/>
                 <Aplication color="#ff0000" color2="#00ff00" icon="Apli" name="Calculadora"/>
-                <Aplication color="#ff0000" color2="#00ff00" icon="Apli" name="Tienda"/>
+                <Aplication color="#ff0000" color2="#00ff00" icon="Apli" name="Tienda" to="Tienda"/>
                 <Aplication color="#ff0000" color2="#00ff00" icon="Apli" name="Instragram" />
                 <Aplication color="#ff0000" color2="#00ff00" icon="Apli" name="Finanzas"/>
                 <Aplication color="#ff0000" color2="#00ff00" icon="Apli" name="Tres en raya"/>

@@ -6,21 +6,72 @@ export const Wallet = () => {
     const [value2, setvalue2] = useState(0)
     const [modal, setModal] = useState(false);
     const [modal2, setmodal2] = useState(false);
-    const [history, setHistory] = useState([{
-        
-    }]);
+    const [modal3, setmodal3] = useState(false)
+    const [error, seterror] = useState("")
+    const [history, setHistory] = useState([{}]);
 
     const addmoney = () => {
-        setValue(value + value);
-        setModal(false);
+        if (value2 > 0) {
+            setValue(value + value2);
+            setModal(false);
+            seterror("");
+            const newEntry = {
+                id: history.length + 1,
+                title: "Depósito",  
+                amount: value2,
+                date: new Date().toLocaleDateString(), 
+            };
+            setHistory([newEntry, ...history]);
+
+        }
+        else{
+            seterror("El valor debe ser mayor a 0")
+        }
+        
+        
     }
 
     const deletemoney = () => {
-        if (value > 0) {
-            setValue(value - value);
+        if (value2 > 0 && value2 <= value) {
+            setValue(value - value2);
+            setmodal2(false);
+            seterror("");
+            const newEntry = {
+                id: history.length + 1,
+                title: "Retiro",
+                amount: -value2,
+                date: new Date().toLocaleDateString(),
+            };
+            setHistory([newEntry, ...history]);
         }
-        setmodal2(false);
+        else{
+            seterror("El valor debe ser mayor a 0")
+        }
+        
+
     }
+
+    const transfermoney = () => {
+        if (value2 > 0 && value2 <= value) {
+            setValue(value - value2);
+            setmodal3(false);
+            seterror("");
+            const newEntry = {
+                id: history.length + 1,
+                title: "Transferencia",
+                amount: -value2,
+                date: new Date().toLocaleDateString(),
+            };
+            setHistory([newEntry, ...history]);
+        }else{
+            seterror("No tienes suficiente dinero")
+        }
+        
+
+    }
+
+    
+    
 
 
     return (
@@ -56,7 +107,7 @@ export const Wallet = () => {
                     >
                         Agregar
                     </button>
-                    <button className="flex-1 px-4 py-2 bg-blue-500 text-white rounded-xl shadow hover:bg-blue-600">
+                    <button className="flex-1 px-4 py-2 bg-blue-500 text-white rounded-xl shadow hover:bg-blue-600" onClick={() => setmodal3(true)}>
                         Transferir
                     </button>
                     <button className="flex-1 px-4 py-2 bg-red-500 text-white rounded-xl shadow hover:bg-red-600" onClick={() => setmodal2(true)}>
@@ -81,7 +132,7 @@ export const Wallet = () => {
                                     className={`font-bold ${item.amount < 0 ? "text-red-500" : "text-green-600"
                                         }`}
                                 >
-                                    {item.amount < 0 ? "-" : "+"}${Math.abs(item.amount)}
+                                    { item.amount}
                                 </span>
                             </div>
                         ))}
@@ -90,18 +141,19 @@ export const Wallet = () => {
 
                 
                 {modal && (
-                    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+                    <div className="fixed inset-0 flex items-center justify-center  bg-opacity-50">
                         <div className="bg-white p-6 rounded-2xl shadow-lg w-80">
                             <h2 className="text-lg font-bold mb-4">Agregar dinero</h2>
                             <input
                                 type="number"
                                 placeholder="Ingrese monto"
                                 className="border w-full px-3 py-2 mb-4 rounded-lg"
-                                onChange={(e) => setValue(Number(e.target.value))}
+                                onChange={(e) => setvalue2(Number(e.target.value))}
+                                
                             />
                             <div className="flex justify-end gap-2">
                                 <button
-                                    onClick={() => setModal(false)}
+                                    onClick={() => {setModal(false) ; seterror("")}}
                                     className="px-4 py-2 bg-gray-400 rounded-lg text-white"
                                 >
                                     Cancelar
@@ -113,23 +165,24 @@ export const Wallet = () => {
                                     Confirmar
                                 </button>
                             </div>
+                            {error && (<div className="mt-2 text-red-500 text-sm">{error}</div>)}
                         </div>
                     </div>
                 )}
 
                 {modal2 && (
-                    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+                    <div className="fixed inset-0 flex items-center justify-center  bg-opacity-50">
                         <div className="bg-white p-6 rounded-2xl shadow-lg w-80">
                             <h2 className="text-lg font-bold mb-4">Retirar dinero</h2>
                             <input
                                 type="number"
                                 placeholder="Ingrese monto"
                                 className="border w-full px-3 py-2 mb-4 rounded-lg"
-                                onChange={(e) => setValue(Number(e.target.value))}
+                                onChange={(e) => setvalue2(Number(e.target.value))}
                             />
                             <div className="flex justify-end gap-2">
                                 <button
-                                    onClick={() => setmodal2(false)}
+                                    onClick={() => {setmodal2(false); seterror("")}}
                                     className="px-4 py-2 bg-gray-400 rounded-lg text-white"
                                 >
                                     Cancelar
@@ -141,8 +194,40 @@ export const Wallet = () => {
                                     Confirmar
                                 </button>
                             </div>
+                            {error && (<div className="mt-2 text-red-500 text-sm">{error}</div>)}
                         </div>
                     </div>
+                    )
+                }
+                {
+                    modal3 && (
+                        <div className="fixed inset-0 flex items-center justify-center bg-transparent bg-opacity-50">
+                            <div className="bg-white p-6 rounded-2xl shadow-lg w-80">
+                                <h2 className="text-lg font-bold mb-4">Transferir dinero</h2>
+                                <input
+                                    type="number"
+                                    placeholder="Ingrese monto"
+                                    className="border w-full px-3 py-2 mb-4 rounded-lg"
+                                    onChange={(e) => setvalue2(Number(e.target.value))}
+                                />
+                                <div className="flex justify-end gap-2">
+                                    <button
+                                        onClick={() => {setmodal3(false); seterror("")} }
+                                        className="px-4 py-2 bg-gray-400 rounded-lg text-white"
+                                    >
+                                        Cancelar
+                                    </button>
+                                    <button
+                                        className="px-4 py-2 bg-blue-500 rounded-lg text-white"
+                                        onClick={transfermoney}
+
+                                    >
+                                        Confirmar
+                                    </button>
+                                </div>
+                                {error && (<div className="mt-2 text-red-500 text-sm">{error}</div>)}
+                            </div>
+                        </div>
                     )
                 }
             </div>
