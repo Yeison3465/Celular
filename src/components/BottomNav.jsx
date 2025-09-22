@@ -1,10 +1,17 @@
 import React from "react";
+import { useState } from "react";
 
-export const BottomNav = () => {
+export const BottomNav = ({ Buy, Favorite}) => {
+
+    const [active, setactive] = useState(false);
+    const [active2, setactive2] = useState(false);
+    const [active3, setactive3] = useState(false);
+
+
     return (
         <nav className="absolute bottom-0 left-0 w-full flex justify-around items-center py-3 bg-blue-600 text-white rounded-b-lg shadow-lg">
-            
-            <button className="flex flex-col items-center">
+
+            <button className="flex flex-col items-center" onClick={() => setactive(true)}>
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     height="28px"
@@ -16,8 +23,8 @@ export const BottomNav = () => {
                 </svg>
             </button>
 
-            
-            <button className="flex flex-col items-center">
+
+            <button className="flex flex-col items-center" onClick={() => setactive2(true)}>
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     height="28px"
@@ -29,8 +36,8 @@ export const BottomNav = () => {
                 </svg>
             </button>
 
-            
-            <button className="flex flex-col items-center">
+
+            <button className="flex flex-col items-center" onClick={() => setactive3(true)}>
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     height="28px"
@@ -42,18 +49,109 @@ export const BottomNav = () => {
                 </svg>
             </button>
 
+            {
+                active && (
+                    <div className="absolute bottom-16 w-72 bg-white rounded-2xl shadow-lg p-4 z-50">
+                        {/* Encabezado con foto, nombre y botón de cerrar */}
+                        <div className="flex items-start justify-between border-b pb-3 mb-3">
+                            <div className="flex items-center gap-3">
+                                <img
+                                    src="images/ImageDefault.jpeg"
+                                    alt="Foto de perfil"
+                                    className="w-12 h-12 rounded-full object-cover"
+                                />
+                                <div>
+                                    <h1 className="text-lg font-bold text-gray-900">Yeison Arrieta</h1>
+                                    <p className="text-sm text-gray-500">YeiArri@email.com</p>
+                                </div>
+                            </div>
+
+                            {/* Botón cerrar */}
+                            <button
+                                onClick={() => setactive(false)}
+                                className="text-gray-500 hover:text-red-600 text-xl font-bold"
+                            >
+                                ×
+                            </button>
+                        </div>
+                    </div>
+
+                )
+            }
+
+            {active2 && (
+                <div className="absolute bottom-16 w-72 bg-white rounded-2xl shadow-lg p-4 z-50">
+                    {/* Header */}
+                    <div className="flex items-start justify-between border-b pb-3 mb-3">
+                        <h1 className="text-lg font-bold text-gray-900">Carrito</h1>
+                        <button
+                            onClick={() => setactive2(false)}
+                            className="text-gray-500 hover:text-red-600 text-xl font-bold"
+                        >
+                            ×
+                        </button>
+                    </div>
+
+                    {/* Lista de productos */}
+                    <div className="max-h-64 overflow-y-auto space-y-2">
+                        {Buy && Buy.length > 0 ? (
+                            Buy.map((product) => (
+                                <div
+                                    key={product.id}
+                                    className="bg-white border rounded-xl shadow-md p-2 flex flex-col hover:shadow-lg transition"
+                                >
+                                    <h2 className="text-base font-semibold text-gray-900 truncate">
+                                        {product.nombre}
+                                    </h2>
+                                    <p className="text-lg font-bold text-blue-600">
+                                        {product.precio?.toLocaleString("es-CO")}
+                                    </p>
+                                </div>
+                            ))
+                        ) : (
+                            <p className="text-gray-500 text-sm">Tu carrito está vacío</p>
+                        )}
+                    </div>
+                </div>
+            )}
+
             
-            <button className="flex flex-col items-center">
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    height="28px"
-                    viewBox="0 -960 960 960"
-                    width="28px"
-                    fill="#ffffff"
-                >
-                    <path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z" />
-                </svg>
-            </button>
+            {active3 && (
+                <div className="absolute bottom-16 w-72 bg-white rounded-2xl shadow-lg p-4 z-50">
+                    {/* Header */}
+                    <div className="flex items-start justify-between border-b pb-3 mb-3">
+                        <h1 className="text-lg font-bold text-gray-900">Favorito</h1>
+                        <button
+                            onClick={() => setactive3(false)}
+                            className="text-gray-500 hover:text-red-600 text-xl font-bold"
+                        >
+                            ×
+                        </button>
+                    </div>
+
+                    {/* Lista de productos */}
+                    <div className="max-h-64 overflow-y-auto space-y-2">
+                        { Favorite && Favorite.length > 0 ? (
+                            Favorite.map((product) => (
+                                <div
+                                    key={product.id}
+                                    className="bg-white border rounded-xl shadow-md p-2 flex flex-col hover:shadow-lg transition"
+                                >
+                                    <h2 className="text-base font-semibold text-gray-900 truncate">
+                                        {product.nombre}
+                                    </h2>
+
+                                </div>
+                            ))
+                        ) : (
+                            <p className="text-gray-500 text-sm">Tus favorito está vacío</p>
+                        )}
+                    </div>
+                </div>
+            )}
+
+
+
         </nav>
     );
 };
