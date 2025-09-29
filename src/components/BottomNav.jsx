@@ -1,157 +1,349 @@
-import React from "react";
-import { useState } from "react";
 
-export const BottomNav = ({ Buy, Favorite}) => {
+import { useState } from "react"
 
-    const [active, setactive] = useState(false);
-    const [active2, setactive2] = useState(false);
-    const [active3, setactive3] = useState(false);
+export const BottomNav = ({ Buy, Favorite, onSum, onRest, onDelete, onDeleteFavorite, counterFavorite, total }) => {
+    const [active, setactive] = useState(false)
+    const [active2, setactive2] = useState(false)
+    const [active3, setactive3] = useState(false)
+    const [active4, setactive4] = useState(false)
 
+    const action = () => {
+        setactive2(false)
+        setactive4(true)
+    }
 
     return (
-        <nav className="absolute bottom-0 left-0 w-full flex justify-around items-center py-3 bg-blue-600 text-white rounded-b-lg shadow-lg">
+        <nav className="absolute bottom-0 left-0 w-full bg-card/95 backdrop-blur-xl border-t border-border rounded-t-3xl shadow-2xl">
+            <div className="flex justify-around items-center py-1 px-2">
 
-            <button className="flex flex-col items-center" onClick={() => setactive(true)}>
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    height="28px"
-                    viewBox="0 -960 960 960"
-                    width="28px"
-                    fill="#ffffff"
+                <button
+                    className="flex flex-col items-center gap-1 p-3 rounded-2xl hover:bg-secondary/50 transition-all duration-200 group"
+                    onClick={() => setactive(true)}
                 >
-                    <path d="M234-276q51-39 114-61.5T480-360q69 0 132 22.5T726-276q35-41 54.5-93T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 59 19.5 111t54.5 93Zm246-164q-59 0-99.5-40.5T340-580q0-59 40.5-99.5T480-720q59 0 99.5 40.5T620-580q0 59-40.5 99.5T480-440Zm0 360q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q53 0 100-15.5t86-44.5q-39-29-86-44.5T480-280q-53 0-100 15.5T294-220q39 29 86 44.5T480-160Zm0-360q26 0 43-17t17-43q0-26-17-43t-43-17q-26 0-43 17t-17 43q0 26 17 43t43 17Zm0-60Zm0 360Z" />
-                </svg>
-            </button>
+                    <div className="relative">
+                        <svg
+                            className="w-6 h-6 text-muted-foreground group-hover:text-primary transition-colors duration-200"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                            />
+                        </svg>
+                    </div>
+                    <span className="text-xs text-muted-foreground group-hover:text-primary transition-colors duration-200">
+                        Perfil
+                    </span>
+                </button>
 
 
-            <button className="flex flex-col items-center" onClick={() => setactive2(true)}>
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    height="28px"
-                    viewBox="0 -960 960 960"
-                    width="28px"
-                    fill="#ffffff"
+                <button
+                    className="flex flex-col items-center gap-1 p-3 rounded-2xl hover:bg-secondary/50 transition-all duration-200 group relative"
+                    onClick={() => setactive2(true)}
                 >
-                    <path d="M280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm400 0q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80ZM246-720l96 200h280l110-200H246Zm-38-80h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h480v80H280q-45 0-68-39.5t-2-78.5l54-98-144-304H40v-80h130l38 80Zm134 280h280-280Z" />
-                </svg>
-            </button>
+                    <div className="relative">
+                        <svg
+                            className="w-6 h-6 text-muted-foreground group-hover:text-primary transition-colors duration-200"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m8 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01"
+                            />
+                        </svg>
+                        {Buy && Buy.length > 0 && (
+                            <span className="absolute -top-2 -right-2 bg-accent text-accent-foreground text-xs rounded-full w-5 h-5 flex items-center justify-center font-semibold">
+                                {Buy.length}
+                            </span>
+                        )}
+                    </div>
+                    <span className="text-xs text-muted-foreground group-hover:text-primary transition-colors duration-200">
+                        Carrito
+                    </span>
+                </button>
 
 
-            <button className="flex flex-col items-center" onClick={() => setactive3(true)}>
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    height="28px"
-                    viewBox="0 -960 960 960"
-                    width="28px"
-                    fill="#ffffff"
+                <button
+                    className="flex flex-col items-center gap-1 p-3 rounded-2xl hover:bg-secondary/50 transition-all duration-200 group relative"
+                    onClick={() => setactive3(true)}
                 >
-                    <path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Zm0-108q96-86 158-147.5t98-107q36-45.5 50-81t14-70.5q0-60-40-100t-100-40q-47 0-87 26.5T518-680h-76q-15-41-55-67.5T300-774q-60 0-100 40t-40 100q0 35 14 70.5t50 81q36 45.5 98 107T480-228Zm0-273Z" />
-                </svg>
-            </button>
+                    <div className="relative">
+                        <svg
+                            className="w-6 h-6 text-muted-foreground group-hover:text-red-500 transition-colors duration-200"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                            />
+                        </svg>
+                        {counterFavorite > 0 && (
+                            <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-semibold">
+                                {counterFavorite}
+                            </span>
+                        )}
+                    </div>
+                    <span className="text-xs text-muted-foreground group-hover:text-red-500 transition-colors duration-200">
+                        Favoritos
+                    </span>
+                </button>
+            </div>
 
-            {
-                active && (
-                    <div className="absolute bottom-16 w-72 bg-white rounded-2xl shadow-lg p-4 z-50">
-                        {/* Encabezado con foto, nombre y botón de cerrar */}
-                        <div className="flex items-start justify-between border-b pb-3 mb-3">
-                            <div className="flex items-center gap-3">
+
+            {active && (
+                <div className="absolute bottom-20 left-4 bg-white right-4 bg-card border border-border rounded-3xl shadow-2xl p-6 z-50 backdrop-blur-xl">
+                    <div className="flex items-center justify-between  border-border mb-4">
+                        <div className="flex items-center gap-4">
+                            <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-accent flex items-center justify-center">
                                 <img
                                     src="images/ImageDefault.jpeg"
                                     alt="Foto de perfil"
                                     className="w-12 h-12 rounded-full object-cover"
                                 />
-                                <div>
-                                    <h1 className="text-lg font-bold text-gray-900">Yeison Arrieta</h1>
-                                    <p className="text-sm text-gray-500">YeiArri@email.com</p>
-                                </div>
                             </div>
-
-                            {/* Botón cerrar */}
-                            <button
-                                onClick={() => setactive(false)}
-                                className="text-gray-500 hover:text-red-600 text-xl font-bold"
-                            >
-                                ×
-                            </button>
+                            <div>
+                                <h1 className="text-lg font-bold text-foreground">Yeison Arrieta</h1>
+                                <p className="text-sm text-muted-foreground">YeiArri@email.com</p>
+                            </div>
                         </div>
-                    </div>
-
-                )
-            }
-
-            {active2 && (
-                <div className="absolute bottom-16 w-72 bg-white rounded-2xl shadow-lg p-4 z-50">
-                    {/* Header */}
-                    <div className="flex items-start justify-between border-b pb-3 mb-3">
-                        <h1 className="text-lg font-bold text-gray-900">Carrito</h1>
                         <button
-                            onClick={() => setactive2(false)}
-                            className="text-gray-500 hover:text-red-600 text-xl font-bold"
+                            onClick={() => setactive(false)}
+                            className="text-muted-foreground hover:text-foreground p-2 rounded-xl hover:bg-secondary/50 transition-all duration-200"
                         >
-                            ×
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                            </svg>
                         </button>
-                    </div>
-
-                    {/* Lista de productos */}
-                    <div className="max-h-64 overflow-y-auto space-y-2">
-                        {Buy && Buy.length > 0 ? (
-                            Buy.map((product) => (
-                                <div
-                                    key={product.id}
-                                    className="bg-white border rounded-xl shadow-md p-2 flex flex-col hover:shadow-lg transition"
-                                >
-                                    <h2 className="text-base font-semibold text-gray-900 truncate">
-                                        {product.nombre}
-                                    </h2>
-                                    <p className="text-lg font-bold text-blue-600">
-                                        {product.precio?.toLocaleString("es-CO")}
-                                    </p>
-                                </div>
-                            ))
-                        ) : (
-                            <p className="text-gray-500 text-sm">Tu carrito está vacío</p>
-                        )}
                     </div>
                 </div>
             )}
 
-            
+
+            {active2 && (
+                <>
+
+                    <div
+                        className="fixed inset-0 bg-black/40 z-40"
+                        onClick={() => setactive2(false)}
+                    />
+
+                    <div className="absolute bottom-20 left-4 right-4 max-h-96 bg-white border border-border rounded-3xl shadow-2xl p-6 z-50 animate-in slide-in-from-bottom-4 duration-300">
+                        {/* Header */}
+                        <div className="flex items-start justify-between border-b border-border pb-4 mb-4">
+                            <h1 className="text-lg font-bold text-foreground">Carrito de Compras</h1>
+                            <button
+                                onClick={() => setactive2(false)}
+                                className="p-2 rounded-xl text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-all duration-200 hover:rotate-90"
+                            >
+                                <svg
+                                    className="w-5 h-5"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={2}
+                                        d="M6 18L18 6M6 6l12 12"
+                                    />
+                                </svg>
+                            </button>
+                        </div>
+                        <div className="max-h-56 overflow-y-auto space-y-3 mb-4 pr-2 scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-muted">
+                            {Buy?.length > 0 ? (
+                                Buy.map((product) => (
+                                    <div
+                                        key={product.id}
+                                        className="bg-secondary/30 border border-border rounded-2xl p-4 hover:bg-secondary/50 transition-all duration-300 hover:shadow-lg relative"
+                                    >
+                                        {/* Header: Nombre + Eliminar */}
+                                        <div className="flex justify-between items-start mb-3">
+                                            <div className="flex-1">
+                                                <h2 className="text-sm font-semibold text-foreground mb-1 truncate">
+                                                    {product.nombre}
+                                                </h2>
+                                                <p className="text-accent font-bold">
+                                                    ${product.precio?.toLocaleString("es-CO")}
+                                                </p>
+                                            </div>
+
+                                            <button
+                                                className="text-red-500 hover:text-red-400 p-2 rounded-xl hover:bg-red-500/10 transition-all duration-200"
+                                                onClick={() => onDelete(product.id)}
+                                            >
+                                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round"
+                                                        strokeWidth={2}
+                                                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                                                    />
+                                                </svg>
+                                            </button>
+                                        </div>
+
+                                        {/* Contador con estilo de botones modernos */}
+                                        <div className="flex items-center gap-3 w-fit">
+                                            <button
+                                                aria-label="Restar producto"
+                                                className="w-8 h-8 rounded-lg bg-black text-white flex items-center justify-center transition-all duration-200 font-bold text-sm shadow-md hover:shadow-lg active:scale-95"
+                                                onClick={() => onRest(product.id)}
+                                            >
+                                                −
+                                            </button>
+                                            <span className="font-semibold text-foreground min-w-[40px] text-center bg-card px-3 py-1.5 rounded-lg border border-border">
+                                                {product.cantidad}
+                                            </span>
+                                            <button
+                                                aria-label="Sumar producto"
+                                                className="w-8 h-8 rounded-lg bg-black text-white flex items-center justify-center transition-all duration-200 font-bold text-sm shadow-md hover:shadow-lg active:scale-95"
+                                                onClick={() => onSum(product.id)}
+                                            >
+                                                +
+                                            </button>
+                                        </div>
+                                    </div>
+                                ))
+                            ) : (
+                                <div className="text-center py-8">
+                                    <svg
+                                        className="w-16 h-16 mx-auto mb-4 text-muted-foreground opacity-50"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth={1}
+                                            d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-2.5 5M7 13l2.5 5m6-5v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6"
+                                        />
+                                    </svg>
+                                    <p className="text-muted-foreground text-sm">Tu carrito está vacío</p>
+                                </div>
+                            )}
+                        </div>
+
+
+                        {Buy?.length > 0 && (
+                            <div className="border-t border-border pt-4 sticky bottom-0 bg-card">
+                                <div className="flex justify-between items-center mb-4">
+                                    <span className="font-semibold text-foreground">Total:</span>
+                                    <span className="text-xl font-bold text-accent">${total}</span>
+                                </div>
+                                <button
+                                    className="w-full py-3 rounded-2xl font-semibold bg-black text-white hover:bg-primary/90 transition-all duration-300 hover:shadow-xl transform hover:scale-[1.02]"
+                                    onClick={action}
+                                >
+                                    Proceder al Pago
+                                </button>
+                            </div>
+                        )}
+                    </div>
+                </>
+            )}
+
+
+
             {active3 && (
-                <div className="absolute bottom-16 w-72 bg-white rounded-2xl shadow-lg p-4 z-50">
-                    {/* Header */}
-                    <div className="flex items-start justify-between border-b pb-3 mb-3">
-                        <h1 className="text-lg font-bold text-gray-900">Favorito</h1>
+                <div className="absolute bottom-20 left-4 right-4 bg-white bg-card border border-border rounded-3xl shadow-2xl p-6 z-50 backdrop-blur-xl max-h-80">
+                    <div className="flex items-start justify-between border-b border-border pb-4 mb-4">
+                        <h1 className="text-lg font-bold text-foreground">Favoritos ({counterFavorite})</h1>
                         <button
                             onClick={() => setactive3(false)}
-                            className="text-gray-500 hover:text-red-600 text-xl font-bold"
+                            className="text-muted-foreground hover:text-foreground p-2 rounded-xl hover:bg-secondary/50 transition-all duration-200"
                         >
-                            ×
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                            </svg>
                         </button>
                     </div>
 
-                    {/* Lista de productos */}
-                    <div className="max-h-64 overflow-y-auto space-y-2">
-                        { Favorite && Favorite.length > 0 ? (
+                    <div className="max-h-48 overflow-y-auto space-y-3">
+                        {Favorite && Favorite.length > 0 ? (
                             Favorite.map((product) => (
                                 <div
                                     key={product.id}
-                                    className="bg-white border rounded-xl shadow-md p-2 flex flex-col hover:shadow-lg transition"
+                                    className="bg-secondary/30 border border-border rounded-2xl p-4 hover:bg-secondary/50 transition-colors"
                                 >
-                                    <h2 className="text-base font-semibold text-gray-900 truncate">
-                                        {product.nombre}
-                                    </h2>
-
+                                    <div className="flex justify-between items-start">
+                                        <div className="flex-1">
+                                            <h2 className="text-sm font-semibold text-foreground mb-1 truncate">{product.nombre}</h2>
+                                            <p className="text-accent font-bold">${product.precio?.toLocaleString("es-CO")}</p>
+                                        </div>
+                                        <button
+                                            className="text-red-500 hover:text-red-400 p-2 rounded-xl hover:bg-red-500/10 transition-all duration-200"
+                                            onClick={() => onDeleteFavorite(product.id)}
+                                        >
+                                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
+                                                    strokeWidth={2}
+                                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                                                />
+                                            </svg>
+                                        </button>
+                                    </div>
                                 </div>
                             ))
                         ) : (
-                            <p className="text-gray-500 text-sm">Tus favorito está vacío</p>
+                            <div className="text-center py-8">
+                                <svg
+                                    className="w-16 h-16 mx-auto mb-4 text-muted-foreground opacity-50"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={1}
+                                        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                                    />
+                                </svg>
+                                <p className="text-muted-foreground text-sm">No tienes favoritos aún</p>
+                            </div>
                         )}
                     </div>
                 </div>
             )}
 
 
-
+            {active4 && (
+                <div className="absolute bottom-20 left-4 right-4 bg-card bg-white border border-border rounded-3xl shadow-2xl p-6 z-50 backdrop-blur-xl">
+                    <div className="text-center">
+                        <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-4">
+                            <svg className="w-8 h-8 text-accent-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                            </svg>
+                        </div>
+                        <h1 className="text-lg font-bold text-foreground mb-2">¡Pago Realizado!</h1>
+                        <p className="text-muted-foreground text-sm mb-6">
+                            Gracias por tu compra. Recibirás un email de confirmación pronto.
+                        </p>
+                        <button
+                            onClick={() => setactive4(false)}
+                            className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-3 rounded-2xl font-semibold transition-all duration-200"
+                        >
+                            Continuar Comprando
+                        </button>
+                    </div>
+                </div>
+            )}
         </nav>
-    );
-};
+    )
+}

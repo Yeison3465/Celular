@@ -11,10 +11,15 @@ export const Shop = () => {
 
     const handleBuy = (producto) => {
         if (Buy.some(item => item.id === producto.id)) {
-            console.log("Este producto ya está en el carrito");
+            setBuy(
+                Buy.map(item =>
+                    item.id === producto.id
+                        ? { ...item, cantidad: item.cantidad + 1 }
+                        : item
+                )
+            );
         } else {
-            setBuy([...Buy, producto]);
-            console.log("Producto añadido al carrito:", producto);
+            setBuy([...Buy, { ...producto, cantidad: 1 }]);
         }
     };
 
@@ -27,6 +32,39 @@ export const Shop = () => {
         }
     }
 
+    const onSum = (id) => {
+        setBuy(
+            Buy.map(item =>
+                item.id === id ? { ...item, cantidad: item.cantidad + 1 } : item
+            )
+        );
+        console.log("Carrito actualizado:", Buy);
+    };
+
+    const onRest = (id) => {
+        setBuy(
+            Buy.map(item =>
+                item.id === id && item.cantidad > 1
+                    ? { ...item, cantidad: item.cantidad - 1 }
+                    : item
+            )
+        );
+    };
+
+    const onDelete = (id) => {
+        setBuy(Buy.filter(item => item.id !== id));
+    }
+
+    const onDeleteFavorite = (id) => {
+        setFavorite(Favorite.filter(item => item.id !== id));
+    }
+
+    const counterFavorite = Favorite.length;
+    let total = 0;
+    for (const item of Buy) {
+        total += item.precio * item.cantidad;
+    }
+    total = total.toLocaleString("es-CO")
     return (
         <PhoneLayout>
             <div className="relative h-full flex flex-col">
@@ -36,17 +74,13 @@ export const Shop = () => {
                     </div>
                     <CardShop onBuy={handleBuy} onFavorite={handleFavorite} searchTerm={searchTerm} />
                 </div>
-                <BottomNav Buy={Buy} Favorite={Favorite} />
+                <BottomNav Buy={Buy} Favorite={Favorite} onSum={onSum} onRest={onRest} onDelete={onDelete} onDeleteFavorite={onDeleteFavorite} counterFavorite={counterFavorite} total={total}/>
 
             </div>
         </PhoneLayout>
     );
 
     // cosa por hacer 
-    // 1. agregar funcionalidad de eliminar productos del carrito y favoritos
     // 2. mejorar el diseño de la tienda
-    // 3. poner un contador de productos en el carrito 
-    // 4. Hacer que se muestre el total a pagar en el carrito
-    // 5. Contador de cuantos productos hay en favoritos
-    // 6. Ventana de compra hecha
+    
 };
