@@ -1,18 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 export const Date = () => {
     const [date, setDate] = useState(new window.Date());
 
+    
     return (
-        <div>
-            <h1>
+        <div className="text-center">
+            
+            <p className="text-lg font-medium text-gray-500 capitalize">
                 {date.toLocaleDateString("es-ES", {
                     weekday: "long",
-                    year: "numeric",
                     month: "long",
                     day: "numeric",
                 })}
-            </h1>
+            </p>
+            
             
         </div>
     );
