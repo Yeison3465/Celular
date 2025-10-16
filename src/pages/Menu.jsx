@@ -29,7 +29,7 @@ export const Menu = () => {
                 <Aplication color="#2ECC71" color2="#27AE60" icon="💰" name="Finanzas" />
                 <Aplication color="#F1C40F" color2="#D4AC0D" icon="⭕" name="Tres en raya" />
                 <Aplication color="#9B59B6" color2="#8E44AD" icon="📊" name="PPA" />
-                <Aplication color="#34495E" color2="#2C3E50" icon="📝" name="Lista" />
+                <Aplication color="#34495E" color2="#2C3E50" icon="📝" name="Lista" to="/Tareas" />
                 <Aplication color="#E67E22" color2="#CA6F1E" icon="🖼️" name="Galería" />
                 <Aplication color="#1ABC9C" color2="#16A085" icon="⏰" name="Reloj" />
                 <Aplication color="#FF4081" color2="#E91E63" icon="🎵" name="Música" />

@@ -12,7 +12,7 @@ export const PhoneLayout = ({ children }) => {
         <div className="flex justify-center items-center min-h-screen">
             <div className="w-[24rem] h-[46rem] border rounded-lg shadow-lg p-4 flex flex-col">
 
-                
+
                 <div className='flex justify-between items-center mb-4'>
                     <div><Hour /></div>
                     <div><Camera /></div>
@@ -24,13 +24,13 @@ export const PhoneLayout = ({ children }) => {
                     </div>
                 </div>
 
-                
+
                 <div className="flex-1 overflow-y-auto">
                     {children}
                 </div>
 
-                
-                <div className="flex justify-evenly items-center mt-auto pt-2 ">
+
+                <div className="flex justify-evenly items-center mt-auto pt-2">
                     <Button
                         icon={
                             <svg xmlns="http://www.w3.org/2000/svg" height="24px"
@@ -38,6 +38,7 @@ export const PhoneLayout = ({ children }) => {
                                 <path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z" />
                             </svg>
                         }
+                        classname=" p-4 rounded-full hover:bg-gray-200 active:bg-gray-200 transition transform hover:scale-125 duration-200 "
                     />
                     <Button
                         icon={
@@ -51,6 +52,7 @@ export const PhoneLayout = ({ children }) => {
                             </svg>
                         }
                         to="/"
+                        classname=" p-4 rounded-full hover:bg-gray-200 active:bg-gray-200 transition transform hover:scale-125 duration-200"
                     />
                     <Button
                         icon={
@@ -59,7 +61,7 @@ export const PhoneLayout = ({ children }) => {
                                 <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
                             </svg>
                         }
-                        
+                        classname="p-4 rounded-full hover:bg-gray-200 active:bg-gray-200 transition transform hover:scale-125 duration-200"
                     />
                 </div>
             </div>
