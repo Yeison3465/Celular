@@ -6,6 +6,7 @@ import { Shop } from '../pages/Shop'
 import { Note } from '../pages/Note'
 import { Music } from '../pages/Music'
 import { Finance } from '../pages/Finance'
+import { Wacht } from '../pages/Wacht'
 
 export const PhoneRouter = () => {
     return (
@@ -17,7 +18,7 @@ export const PhoneRouter = () => {
                 <Route path="Tareas" element={<Note/>} />
                 <Route path="Musica" element={<Music/>} />
                 <Route path="Finanzas" element={<Finance/>} />
-                
+                <Route path="Relog" element={<Wacht/>} />
             </Routes>
         </>
     )

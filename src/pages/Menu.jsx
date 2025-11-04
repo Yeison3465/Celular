@@ -31,7 +31,7 @@ export const Menu = () => {
                 <Aplication color="#9B59B6" color2="#8E44AD" icon="📊" name="PPA" />
                 <Aplication color="#34495E" color2="#2C3E50" icon="📝" name="Lista" to="Tareas" />
                 <Aplication color="#E67E22" color2="#CA6F1E" icon="🖼️" name="Galería" />
-                <Aplication color="#1ABC9C" color2="#16A085" icon="⏰" name="Reloj" />
+                <Aplication color="#1ABC9C" color2="#16A085" icon="⏰" name="Reloj" to="Relog"/>
                 <Aplication color="#FF4081" color2="#E91E63" icon="🎵" name="Música" to="Musica" />
                 <Aplication color="#00BCD4" color2="#0097A7" icon="💬" name="Chats" />
             </div>
