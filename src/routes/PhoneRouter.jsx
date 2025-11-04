@@ -5,6 +5,7 @@ import { Menu } from '../pages/Menu'
 import { Shop } from '../pages/Shop'
 import { Note } from '../pages/Note'
 import { Music } from '../pages/Music'
+import { Finance } from '../pages/Finance'
 
 export const PhoneRouter = () => {
     return (
@@ -15,6 +16,7 @@ export const PhoneRouter = () => {
                 <Route path="Tienda" element={<Shop/>} />
                 <Route path="Tareas" element={<Note/>} />
                 <Route path="Musica" element={<Music/>} />
+                <Route path="Finanzas" element={<Finance/>} />
                 
             </Routes>
         </>
