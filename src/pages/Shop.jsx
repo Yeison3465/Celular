@@ -80,7 +80,5 @@ export const Shop = () => {
         </PhoneLayout>
     );
 
-    // cosa por hacer 
-    // 2. mejorar el diseño de la tienda
     
 };

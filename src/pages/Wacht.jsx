@@ -34,67 +34,90 @@ export const Wacht = () => {
     return (
         <PhoneLayout>
 
+            
             <div className="">
-                <div className="p-8 bg-white/80 backdrop-blur-md rounded-2xl shadow-lg text-center">
-                    <h1 className="text-gray-700 text-sm uppercase tracking-widest mb-3">
+                <div className="p-8 bg-white/70 backdrop-blur-xl rounded-3xl shadow-md text-center border border-white/40">
+                    <h1 className="text-gray-600 text-xs uppercase tracking-widest mb-2">
                         Reloj en tiempo real
                     </h1>
-                    <p className="text-6xl font-light text-gray-900 transition-all duration-300">
+                    <p className="text-6xl font-thin text-gray-900">
                         {time.toLocaleTimeString()}
                     </p>
                 </div>
             </div>
-            
-            <button onClick={onSet}>añadir alarma</button>
 
-            <div>
-                {
-                    wachts.map((wacht, index) => (
-                        <div key={index} className="p-4 bg-white/80 backdrop-blur-md rounded-2xl shadow-lg text-center mt-4">
-                            <h2 className="text-gray-700 text-sm uppercase tracking-widest mb-2">
-                                alarma numero {wacht.nameclock}
-                            </h2>
-                            <p className="text-4xl font-light text-gray-900">
-                                {wacht.time}
-                            </p>
-                            <button onClick={() => onDelete(index)}>eliminar</button>
+            
+            <button
+                onClick={onSet}
+                className="mt-6 w-full py-3 bg-black text-white rounded-xl shadow-md 
+                    active:scale-95 transition-all font-semibold tracking-wide
+                    hover:bg-neutral-900"
+            >
+                + Añadir alarma
+            </button>
+
+           
+            <div className="mt-4 space-y-4">
+                {wachts.map((wacht, index) => (
+                    <div
+                        key={index}
+                        className="p-5 bg-white/70 backdrop-blur-xl rounded-2xl shadow-sm 
+                            flex justify-between items-center border border-white/40"
+                    >
+                        <div>
+                            <p className="text-4xl text-gray-900 font-light">{wacht.time}</p>
+                            <span className="text-gray-600 text-xs uppercase">
+                                Alarma {wacht.nameclock}
+                            </span>
                         </div>
-                    ))
-                }
-            </div>
-            
 
-            {
-                isSet && (
-                    <div className="mt-6 p-4 bg-white/80 backdrop-blur-md rounded-2xl shadow-lg">
-                        <input type="time"
-                            className="w-full p-2 border border-gray-300 rounded-lg mb-4"
-                            value={newWacht}
-                            onChange={(e) => setnewWacht(e.target.value)}
-                        />
-                        
                         <button
-                            className="w-full bg-blue-600 text-white p-2 rounded-lg"
-                            onClick={() => {
-                                onAddWacht({ time: newWacht, nameclock: nameclock.length + 1 });
-                                setisSet(false);
-                                setnewWacht("");
-                                setnameclock("");
-                            }}
+                            onClick={() => onDelete(index)}
+                            className="text-red-500 font-semibold hover:text-red-600 active:scale-90 transition"
                         >
-                            Guardar Alarma  
+                            Eliminar
                         </button>
-                        <button onClick={()=>setisSet(false) }>
-                            cancelar
-                        </button>
-                    </div> 
-                    
-                )
-            }
+                    </div>
+                ))}
+            </div>
 
+            
+            {isSet && (
+                <div className="mt-6 p-5 bg-white/80 backdrop-blur-xl rounded-2xl shadow-lg border border-white/40">
 
+                    <input
+                        type="time"
+                        className="w-full p-3 rounded-xl bg-gray-100 border border-gray-300 
+                            focus:ring-2 focus:ring-black focus:outline-none text-xl"
+                        value={newWacht}
+                        onChange={(e) => setnewWacht(e.target.value)}
+                    />
 
+                    <button
+                        className="w-full mt-4 py-3 bg-black text-white rounded-xl font-semibold
+                            hover:bg-neutral-900 active:scale-95 transition-all"
+                        onClick={() => {
+                            onAddWacht({
+                                time: newWacht,
+                                nameclock: wachts.length + 1
+                            });
+                            setisSet(false);
+                            setnewWacht("");
+                        }}
+                    >
+                        Guardar alarma
+                    </button>
+
+                    <button
+                        onClick={() => setisSet(false)}
+                        className="w-full mt-2 py-2 text-gray-500 hover:text-gray-700 active:scale-95 transition"
+                    >
+                        Cancelar
+                    </button>
+                </div>
+            )}
 
         </PhoneLayout>
+
     );
 }
