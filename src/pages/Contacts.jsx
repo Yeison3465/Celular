@@ -8,7 +8,8 @@ export const Contacts = () => {
     const [Numero, setNumero] = useState("");
     const [Search, setSearch] = useState("");
     const [Modal, setModal] = useState(false);
-    const [Modal2, setModal2] = useState(false)
+    const [Modal2, setModal2] = useState(false);
+    const [CallingContact, setCallingContact] = useState(null);
 
     const addContact = () => {
         if (Name.trim() !== "" && Numero.trim() !== "") {
@@ -79,7 +80,10 @@ export const Contacts = () => {
 
                         <div className="ml-auto">
                             <button
-                                onClick={() => setModal2(true)}
+                                onClick={() => {
+                                    setCallingContact(contact);
+                                    setModal2(true);
+                                }}
                                 className="w-12 h-12 flex items-center justify-center bg-green-500 text-white rounded-full shadow hover:bg-green-600 active:scale-95 transition ml-auto"
                             >
                                 <svg
@@ -143,7 +147,44 @@ export const Contacts = () => {
                 </div>
             )}
 
-            
+            {Modal2 && (
+                <div className="absolute inset-0 flex justify-center items-center z-50">
+                    <div className="w-[24rem] h-[46rem] bg-black text-white flex flex-col items-center justify-between py-16 rounded-lg">
+
+                        
+                        <div className="mt-20 text-center">
+                            <h1 className="text-3xl font-semibold">
+                                {CallingContact?.nombre || "Desconocido"}
+                            </h1>
+                            <p className="text-gray-300 mt-2">is calling…</p>
+                        </div>
+
+                        
+                        <div className="flex justify-center gap-20 mb-10">
+
+                            
+                            <button
+                                onClick={() => setModal2(false)}
+                                className="flex flex-col items-center"
+                            >
+                                <div className="bg-red-600 w-16 h-16 rounded-full flex items-center justify-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 0 24 24" width="30" fill="white">
+                                        <path d="M21 16.5v3a2.5 2.5 0 0 1-2.7 2.5A19.6 19.6 0 0 1 11.4 18a19.5 19.5 0 0 1-6-6A19.6 19.6 0 0 1 2 5.7 2.5 2.5 0 0 1 4.5 3h3a2.5 2.5 0 0 1 2.5 2.2c.1.8.3 1.6.7 2.3a2.5 2.5 0 0 1-.5 2.6L8.6 11a16 16 0 0 0 6 6l1.9-1.5a2.5 2.5 0 0 1 2.6-.5c.7.3 1.5.6 2.3.7A2.5 2.5 0 0 1 21 16.5z" />
+                                    </svg>
+                                </div>
+                                <span className="mt-2 text-sm text-gray-300">Decline</span>
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+            )}
+
+
+
+
+
+
 
         </PhoneLayout>
     );
