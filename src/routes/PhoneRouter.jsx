@@ -7,6 +7,9 @@ import { Note } from '../pages/Note'
 import { Music } from '../pages/Music'
 import { Finance } from '../pages/Finance'
 import { Wacht } from '../pages/Wacht'
+import { DataCall } from '../Data/RegistroCall'
+import { CalLog } from '../pages/CalLog'
+import { Contacts } from '../pages/contacts'
 
 export const PhoneRouter = () => {
     return (
@@ -19,6 +22,8 @@ export const PhoneRouter = () => {
                 <Route path="Musica" element={<Music/>} />
                 <Route path="Finanzas" element={<Finance/>} />
                 <Route path="Relog" element={<Wacht/>} />
+                <Route path="Llamadas" element={<CalLog/>} />
+                <Route path="Conctatos" element={<Contacts/>} />
             </Routes>
         </>
     )

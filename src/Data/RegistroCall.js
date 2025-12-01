@@ -1,4 +1,4 @@
-export const Data = [
+export const DataCall = [
     {
         id: 1,
         nombre: "María Gómez",

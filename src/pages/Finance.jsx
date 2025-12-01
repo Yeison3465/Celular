@@ -43,7 +43,7 @@ export const Finance = () => {
     return (
         <PhoneLayout>
             <div className="p-4">
-                {/* Encabezado */}
+               
                 <div className="flex justify-between items-center mb-4">
                     <h1 className="text-xl font-bold text-gray-800">💰 Registros Financieros</h1>
                     <button
@@ -54,7 +54,7 @@ export const Finance = () => {
                     </button>
                 </div>
 
-                {/* Lista de registros */}
+                
                 <div className="space-y-3">
                     {records.length === 0 ? (
                         <p className="text-gray-500 text-center py-10">
@@ -92,7 +92,7 @@ export const Finance = () => {
                 </div>
             </div>
 
-            {/* Modal */}
+            
             {modal && (
                 <div className="fixed inset-0 flex items-center justify-center z-50">
                     <div className="bg-white rounded-2xl shadow-lg p-6 w-80 animate-fadeIn">
