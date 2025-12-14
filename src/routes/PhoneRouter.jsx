@@ -9,7 +9,9 @@ import { Finance } from '../pages/Finance'
 import { Wacht } from '../pages/Wacht'
 import { DataCall } from '../Data/RegistroCall'
 import { CalLog } from '../pages/CalLog'
-import { Contacts } from '../pages/contacts'
+import { Contacts } from '../pages/Contacts'
+import { Message } from '../pages/Message'
+import { MessageDetail } from '../pages/MessageDetail'
 
 export const PhoneRouter = () => {
     return (
@@ -24,6 +26,8 @@ export const PhoneRouter = () => {
                 <Route path="Relog" element={<Wacht/>} />
                 <Route path="Llamadas" element={<CalLog/>} />
                 <Route path="Conctatos" element={<Contacts/>} />
+                <Route path="Mensajes" element={<Message/>} />
+                <Route path="Mensajes/:id" element={<MessageDetail/>} />
             </Routes>
         </>
     )

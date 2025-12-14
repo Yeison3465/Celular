@@ -1,0 +1,51 @@
+export const mensajes = [
+    {
+        id: 1,
+        codigo: 2001,
+        tipo: "pago",
+        contenido: "El pago de su entrada fue procesado exitosamente.",
+        fechaEnvio: "2025-12-13T09:15:00",
+    },
+    {
+        id: 2,
+        codigo: 2002,
+        tipo: "factura",
+        contenido: "Su factura electrónica ya está disponible para descarga.",
+        fechaEnvio: "2025-12-13T10:00:00",
+    },
+    {
+        id: 3,
+        codigo: 2003,
+        tipo: "oferta",
+        contenido: "Oferta especial: 2x1 en entradas para funciones de hoy.",
+        fechaEnvio: "2025-12-13T11:30:00",
+    },
+    {
+        id: 4,
+        codigo: 2004,
+        tipo: "reembolso",
+        contenido: "Su solicitud de devolución de dinero fue aprobada.",
+        fechaEnvio: "2025-12-13T12:45:00",
+    },
+    {
+        id: 5,
+        codigo: 2005,
+        tipo: "aviso",
+        contenido: "Recuerde llegar 15 minutos antes del inicio de la función.",
+        fechaEnvio: "2025-12-13T13:20:00",
+    },
+    {
+        id: 6,
+        codigo: 2006,
+        tipo: "pago",
+        contenido: "El pago de su suscripción mensual ha sido realizado.",
+        fechaEnvio: "2025-12-13T14:10:00",
+    },
+    {
+        id: 7,
+        codigo: 2007,
+        tipo: "oferta",
+        contenido: "Descuento del 20% en combos de comida este fin de semana.",
+        fechaEnvio: "2025-12-13T15:40:00",
+    },
+];
