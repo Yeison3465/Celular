@@ -16,8 +16,8 @@ export const MessageDetail = () => {
         <PhoneLayout>
             <div className="flex flex-col h-full bg-gray-100">
 
-                {/* HEADER */}
-                <div className="flex items-center gap-3 p-4 bg-white border-b">
+                
+                <div className="flex items-center gap-3  bg-white border-b">
                     <div className="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold">
                         {message.tipo.charAt(0).toUpperCase()}
                     </div>
@@ -32,7 +32,7 @@ export const MessageDetail = () => {
                     </div>
                 </div>
 
-                {/* MENSAJE */}
+               
                 <div className="flex-1 p-4 overflow-y-auto">
                     <div className="max-w-xs ml-auto bg-blue-600 text-white p-3 rounded-2xl rounded-br-sm shadow">
                         <p className="text-sm leading-relaxed">

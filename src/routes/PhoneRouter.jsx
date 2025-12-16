@@ -12,6 +12,8 @@ import { CalLog } from '../pages/CalLog'
 import { Contacts } from '../pages/Contacts'
 import { Message } from '../pages/Message'
 import { MessageDetail } from '../pages/MessageDetail'
+import { Galery } from '../pages/Galery'
+import { Photo } from '../pages/Photo'
 
 export const PhoneRouter = () => {
     return (
@@ -28,6 +30,8 @@ export const PhoneRouter = () => {
                 <Route path="Conctatos" element={<Contacts/>} />
                 <Route path="Mensajes" element={<Message/>} />
                 <Route path="Mensajes/:id" element={<MessageDetail/>} />
+                <Route path="Galeria" element={<Galery/>} />
+                <Route path='Galeria/:code' element={<Photo/>} />
             </Routes>
         </>
     )
