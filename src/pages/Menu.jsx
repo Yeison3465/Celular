@@ -5,10 +5,12 @@ import { Temperature } from '../components/Temperature'
 import { Aplication } from '../components/Aplication'
 import { GoogleSearch } from '../components/GoogleSearch'
 import { PhoneLayout } from '../Layout/PhoneLayout'
+import { useBackground } from '../context/BackgroundContext'
 
 export const Menu = () => {
+    const { background } = useBackground();
     return (
-        <PhoneLayout>
+        <PhoneLayout background={background}> 
             
             <div className="flex justify-center items-center mt-6 space-x-4">
                 <Date />
@@ -41,8 +43,8 @@ export const Menu = () => {
                 <Aplication color="#4CAF50" color2="#388E3C" icon="📞" name="Llamadas" to="Llamadas"  />
                 <Aplication color="#3F51B5" color2="#303F9F" icon="👥" name="Contactos" to="Conctatos" />
                 <Aplication color="#FF9800" color2="#F57C00" icon="✉️" name="Mensajes" to="Mensajes" />
-                <Aplication color="#9C27B0" color2="#7B1FA2" icon="📷" name="Cámara" />
-                <Aplication color="#607D8B" color2="#455A64" icon="🎨" name="Fondos" />
+                <Aplication color="#9C27B0" color2="#7B1FA2" icon="📷" name="Cámara" to="Camara" />
+                <Aplication color="#607D8B" color2="#455A64" icon="🎨" name="Fondos" to="Fondos" />
             </div>
         </PhoneLayout>
     )

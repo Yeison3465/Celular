@@ -14,6 +14,9 @@ import { Message } from '../pages/Message'
 import { MessageDetail } from '../pages/MessageDetail'
 import { Galery } from '../pages/Galery'
 import { Photo } from '../pages/Photo'
+import { Camera } from '../components/Camera'
+import { CameraPages } from '../pages/CameraPages'
+import { Background } from '../pages/Background'
 
 export const PhoneRouter = () => {
     return (
@@ -32,6 +35,8 @@ export const PhoneRouter = () => {
                 <Route path="Mensajes/:id" element={<MessageDetail/>} />
                 <Route path="Galeria" element={<Galery/>} />
                 <Route path='Galeria/:code' element={<Photo/>} />
+                <Route path='Camara' element={<CameraPages/>} />
+                <Route path='Fondos' element={<Background/>} />
             </Routes>
         </>
     )
