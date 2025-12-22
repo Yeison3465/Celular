@@ -25,7 +25,7 @@ export const Menu = () => {
             
             <div className="grid grid-cols-4 gap-6 mt-10 place-items-center px-4">
                 <Aplication color="#4A90E2" color2="#357ABD" icon="💳" name="Billetera" to="Billetera" />
-                <Aplication color="#7B61FF" color2="#5A3FC0" icon="🧮" name="Calculadora" />
+                <Aplication color="#7B61FF" color2="#5A3FC0" icon="🧮" name="Calculadora" to="Calculadora" />
                 <Aplication color="#FF6F61" color2="#E55748" icon="🛒" name="Tienda" to="Tienda" />
                 <Aplication color="#F56040" color2="#C13584" icon="📷" name="Instagram" />
                 <Aplication color="#2ECC71" color2="#27AE60" icon="💰" name="Finanzas" to="Finanzas" />

@@ -17,6 +17,7 @@ import { Photo } from '../pages/Photo'
 import { Camera } from '../components/Camera'
 import { CameraPages } from '../pages/CameraPages'
 import { Background } from '../pages/Background'
+import { Calculator } from '../pages/Calculator'
 
 export const PhoneRouter = () => {
     return (
@@ -37,6 +38,7 @@ export const PhoneRouter = () => {
                 <Route path='Galeria/:code' element={<Photo/>} />
                 <Route path='Camara' element={<CameraPages/>} />
                 <Route path='Fondos' element={<Background/>} />
+                <Route path='Calculadora' element={<Calculator/>} />
             </Routes>
         </>
     )
