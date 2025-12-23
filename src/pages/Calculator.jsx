@@ -71,8 +71,6 @@ export const Calculator = () => {
                     >
                         ×
                     </button>
-
-                   
                     {[7, 8, 9].map((n) => (
                         <button
                             key={n}

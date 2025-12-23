@@ -35,7 +35,7 @@ export const Menu = () => {
                 <Aplication color="#E67E22" color2="#CA6F1E" icon="🖼️" name="Galería" to="Galeria" />
                 <Aplication color="#1ABC9C" color2="#16A085" icon="⏰" name="Reloj" to="Relog"/>
                 <Aplication color="#FF4081" color2="#E91E63" icon="🎵" name="Música" to="Musica" />
-                <Aplication color="#00BCD4" color2="#0097A7" icon="💬" name="Chats" />
+                <Aplication color="#00BCD4" color2="#0097A7" icon="💬" name="Chats" to="Chats"/>
             </div>
 
             

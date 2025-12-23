@@ -18,6 +18,8 @@ import { Camera } from '../components/Camera'
 import { CameraPages } from '../pages/CameraPages'
 import { Background } from '../pages/Background'
 import { Calculator } from '../pages/Calculator'
+import { Chat } from '../pages/Chat'
+import { ChatFriends } from '../pages/ChatFriends'
 
 export const PhoneRouter = () => {
     return (
@@ -39,6 +41,8 @@ export const PhoneRouter = () => {
                 <Route path='Camara' element={<CameraPages/>} />
                 <Route path='Fondos' element={<Background/>} />
                 <Route path='Calculadora' element={<Calculator/>} />
+                <Route path='Chats' element={<Chat/>} />
+                <Route path='Chats/:numero' element={<ChatFriends/>} />
             </Routes>
         </>
     )
