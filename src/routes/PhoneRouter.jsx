@@ -20,6 +20,8 @@ import { Background } from '../pages/Background'
 import { Calculator } from '../pages/Calculator'
 import { Chat } from '../pages/Chat'
 import { ChatFriends } from '../pages/ChatFriends'
+import { Instagram } from '../pages/Instagram'
+import { StoryIg } from '../pages/StoryIg'
 
 export const PhoneRouter = () => {
     return (
@@ -43,6 +45,8 @@ export const PhoneRouter = () => {
                 <Route path='Calculadora' element={<Calculator/>} />
                 <Route path='Chats' element={<Chat/>} />
                 <Route path='Chats/:numero' element={<ChatFriends/>} />
+                <Route path='Instagram' element={<Instagram/>} />
+                <Route path='Instagram/stories/:id' element={<StoryIg/>} />
             </Routes>
         </>
     )
