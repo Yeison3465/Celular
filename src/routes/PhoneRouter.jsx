@@ -22,6 +22,7 @@ import { Chat } from '../pages/Chat'
 import { ChatFriends } from '../pages/ChatFriends'
 import { Instagram } from '../pages/Instagram'
 import { StoryIg } from '../pages/StoryIg'
+import { Triki } from "../pages/Triki";
 
 export const PhoneRouter = () => {
     return (
@@ -47,6 +48,7 @@ export const PhoneRouter = () => {
                 <Route path='Chats/:numero' element={<ChatFriends/>} />
                 <Route path='Instagram' element={<Instagram/>} />
                 <Route path='Instagram/stories/:id' element={<StoryIg/>} />
+                <Route path='Tiki' element={<Triki/>} />
             </Routes>
         </>
     )
