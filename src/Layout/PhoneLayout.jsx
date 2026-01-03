@@ -5,7 +5,7 @@ import { Bluetooth } from '../components/icons/Bluetooth'
 import { SignalCellular } from '../components/icons/SignalCellular'
 import { Wifi } from '../components/icons/Wifi'
 import { Battery } from '../components/icons/Battery'
-import { Button } from '../components/button'
+import { ButtonIcon } from '../components/ButtonIcon'
 import { useNavigate } from "react-router-dom";
 import { useBackground } from '../context/BackgroundContext'
 export const PhoneLayout = ({ children,background }) => {
@@ -40,7 +40,7 @@ export const PhoneLayout = ({ children,background }) => {
 
 
                 <div className="flex justify-evenly items-center mt-auto pt-2">
-                    <Button
+                    <ButtonIcon
                         icon={
                             <svg xmlns="http://www.w3.org/2000/svg" height="24px"
                                 viewBox="0 -960 960 960" width="24px" fill="#000000">
@@ -50,7 +50,7 @@ export const PhoneLayout = ({ children,background }) => {
                         classname=" p-4 rounded-full hover:bg-gray-200 active:bg-gray-200 transition transform hover:scale-125 duration-200 "
                         to={-1}
                     />
-                    <Button
+                    <ButtonIcon
                         icon={
                             <svg xmlns="http://www.w3.org/2000/svg" height="24px"
                                 viewBox="0 -960 960 960" width="24px" fill="#000000">
@@ -64,7 +64,7 @@ export const PhoneLayout = ({ children,background }) => {
                         to="/"
                         classname=" p-4 rounded-full hover:bg-gray-200 active:bg-gray-200 transition transform hover:scale-125 duration-200"
                     />
-                    <Button
+                    <ButtonIcon
                         icon={
                             <svg xmlns="http://www.w3.org/2000/svg" height="24px"
                                 viewBox="0 -960 960 960" width="24px" fill="#000000">
