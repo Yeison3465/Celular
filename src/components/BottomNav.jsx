@@ -169,7 +169,7 @@ export const BottomNav = ({ Buy, Favorite, onSum, onRest, onDelete, onDeleteFavo
                                         key={product.id}
                                         className="bg-secondary/30 border border-border rounded-2xl p-4 hover:bg-secondary/50 transition-all duration-300 hover:shadow-lg relative"
                                     >
-                                        {/* Header: Nombre + Eliminar */}
+                                        
                                         <div className="flex justify-between items-start mb-3">
                                             <div className="flex-1">
                                                 <h2 className="text-sm font-semibold text-foreground mb-1 truncate">
@@ -195,7 +195,7 @@ export const BottomNav = ({ Buy, Favorite, onSum, onRest, onDelete, onDeleteFavo
                                             </button>
                                         </div>
 
-                                        {/* Contador con estilo de botones modernos */}
+                                        
                                         <div className="flex items-center gap-3 w-fit">
                                             <button
                                                 aria-label="Restar producto"

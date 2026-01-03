@@ -5,9 +5,10 @@ import { Bluetooth } from '../components/icons/Bluetooth'
 import { SignalCellular } from '../components/icons/SignalCellular'
 import { Wifi } from '../components/icons/Wifi'
 import { Battery } from '../components/icons/Battery'
-import { ButtonIcon } from '../components/ButtonIcon'
+
 import { useNavigate } from "react-router-dom";
 import { useBackground } from '../context/BackgroundContext'
+import { ButtonIcon } from '../components/ButtonIcon'
 export const PhoneLayout = ({ children,background }) => {
     
     return (
