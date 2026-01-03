@@ -55,7 +55,7 @@ export const CardShop = ({ onBuy, onFavorite, searchTerm = "" }) => {
 
                             <div className="flex items-center justify-between mb-3">
                                 <p className="text-lg font-bold text-accent">${producto.precio.toLocaleString("es-CO")}</p>
-                               
+                                
                             </div>
 
                             <button

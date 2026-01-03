@@ -8,7 +8,7 @@ export const Wallet = () => {
     const [modal2, setmodal2] = useState(false);
     const [modal3, setmodal3] = useState(false)
     const [error, seterror] = useState("")
-    const [history, setHistory] = useState([{}]);
+    const [history, setHistory] = useState([]);
 
     const addmoney = () => {
         if (value2 > 0) {

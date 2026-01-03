@@ -6,9 +6,11 @@ import { Aplication } from '../components/Aplication'
 import { GoogleSearch } from '../components/GoogleSearch'
 import { PhoneLayout } from '../Layout/PhoneLayout'
 import { useBackground } from '../context/BackgroundContext'
+import { YoutubeIcon } from '../components/icons/YoutubeIcon'
 
 export const Menu = () => {
     const { background } = useBackground();
+    const LinkYoutube = "https://www.youtube.com/"
     return (
         <PhoneLayout background={background}> 
             
@@ -30,7 +32,7 @@ export const Menu = () => {
                 <Aplication color="#F56040" color2="#C13584" icon="📷" name="Instagram" to="Instagram" />
                 <Aplication color="#2ECC71" color2="#27AE60" icon="💰" name="Finanzas" to="Finanzas" />
                 <Aplication color="#F1C40F" color2="#D4AC0D" icon="⭕" name="Tres en raya" to="Tiki" />
-                <Aplication color="#9B59B6" color2="#8E44AD" icon="📊" name="PPA" />
+                <Aplication color="#b30d0dff" color2="#b61212ff" icon={<YoutubeIcon />} name="Youtube" to={LinkYoutube} />
                 <Aplication color="#34495E" color2="#2C3E50" icon="📝" name="Lista" to="Tareas" />
                 <Aplication color="#E67E22" color2="#CA6F1E" icon="🖼️" name="Galería" to="Galeria" />
                 <Aplication color="#1ABC9C" color2="#16A085" icon="⏰" name="Reloj" to="Relog"/>

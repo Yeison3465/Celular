@@ -49,6 +49,7 @@ export const PhoneRouter = () => {
                 <Route path='Instagram' element={<Instagram/>} />
                 <Route path='Instagram/stories/:id' element={<StoryIg/>} />
                 <Route path='Tiki' element={<Triki/>} />
+                
             </Routes>
         </>
     )
